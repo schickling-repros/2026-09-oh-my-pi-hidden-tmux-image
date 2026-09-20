@@ -18,6 +18,8 @@ The script creates an isolated tmux server and checks these cases:
 3. Selecting the hidden window replays the placeholder without replaying the transmission.
 4. OMP's `ImageBudget` still reports that the dropped image does not need transmission.
 
+The emitter sends a valid one-pixel PNG and uses OMP 18.2.6's `encodeKittyVirtualPlacement` and `encodeKittyPlaceholderGrid` functions.
+
 The script does not connect to or modify existing tmux servers.
 
 ## Expected

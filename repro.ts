@@ -1,4 +1,5 @@
 import { ImageBudget } from "@oh-my-pi/pi-tui/components/image";
+import { encodeKittyPlaceholderGrid, encodeKittyVirtualPlacement } from "@oh-my-pi/pi-tui/kitty-graphics";
 import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -8,8 +9,11 @@ const placeholder = "\u{10eeee}";
 
 if (process.argv.includes("--emit")) {
   const escape = "\u001b";
-  const kittyTransmit = `${escape}Ptmux;${escape}${escape}_Ga=t,f=100,i=${imageId},m=0,q=2;AAAA${escape}${escape}\\${escape}\\`;
-  process.stdout.write(`${kittyTransmit}${placeholder}\n`);
+  const png = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR4nGNgAAAAAgABSK+kcQAAAABJRU5ErkJggg==";
+  const kittyTransmit = `${escape}Ptmux;${escape}${escape}_Ga=t,f=100,i=${imageId},m=0,q=2;${png}${escape}${escape}\\${escape}\\`;
+  const placement = encodeKittyVirtualPlacement({ imageId, placementId: 1, columns: 1, rows: 1 });
+  const grid = encodeKittyPlaceholderGrid({ imageId, placementId: 1, columns: 1, rows: 1 });
+  process.stdout.write(`${kittyTransmit}${placement}${grid.join("\n")}\n`);
   await Promise.withResolvers<void>().promise;
 }
 
