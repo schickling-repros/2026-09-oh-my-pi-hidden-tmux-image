@@ -53,4 +53,4 @@ BUG REPRODUCED: the selected window has an unresolved image placeholder and OMP 
 
 ## Upstream issue
 
-Pending.
+https://github.com/can1357/oh-my-pi/issues/12595
