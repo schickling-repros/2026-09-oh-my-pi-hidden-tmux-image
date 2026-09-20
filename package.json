@@ -1,0 +1,14 @@
+{
+  "name": "oh-my-pi-hidden-tmux-image-repro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "repro": "bun run repro.ts"
+  },
+  "dependencies": {
+    "@oh-my-pi/pi-tui": "18.2.6"
+  },
+  "engines": {
+    "bun": ">=1.4.0"
+  }
+}
